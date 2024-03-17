@@ -30,8 +30,12 @@
     display: flex;
 }
 .nav-items{
-    padding-left:20px;
+    padding-left:30px;
     color:white;
+    text-decoration: none;
+}
+.nav-items:hover{
+    color:rgb(255, 130, 28);
 }
 
 .menu-text{

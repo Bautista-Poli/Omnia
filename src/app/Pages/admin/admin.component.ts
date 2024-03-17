@@ -3,30 +3,39 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
 import { NgFor } from '@angular/common'; 
 
+import { HourService } from '../service/hour.service';
+import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
   imports: [
     FormsModule,
-    NgFor
+    NgFor,
+    RouterOutlet,
+    RouterModule,
+    MatIconModule
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
 export class AdminComponent implements OnInit {
-  hours: number[] = [];
+  hours: string[] = [];
 
   username: string = "";
   password: string | null = "";
 
   newClassSrc: string = "";
   newClassName: string = "";
+  newClassProfessor: string = "";
+  newClassProfessor2: string = "";
   newClassDate: string = "";
-  newClassTime: number = 0;
+  newClassTime: string = "";
   newClassId: number = 0;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private hourService:HourService ) {
     this.populateHours();
   }
 
@@ -56,33 +65,55 @@ export class AdminComponent implements OnInit {
     // Redirect to login page after successful logout
     this.router.navigate(['/inicio']);
   }
+  dateToNumber(value:string):number{
+    if(value=="Lunes"){
+      return 0;
+    }
+    if(value=="Martes"){
+      return 1;
+    }
+    if(value=="Miercoles"){
+      return 2;
+    }
+    if(value=="Jueves"){
+      return 3;
+    }
+    if(value=="Viernes"){
+      return 4;
+    }
+    return 0;
+  }
   addClass(){
     console.log(this.newClassSrc);
     console.log(this.newClassName);
     console.log(this.newClassDate);
     console.log(this.newClassTime);
     console.log(this.newClassId);
+    this.hourService.changeHourValue(
+      this.newClassSrc,
+      this.newClassName,
+      this.dateToNumber(this.newClassDate),
+      this.newClassTime,
+      this.newClassProfessor,
+      this.newClassProfessor2
+      );
   }
   removeClass(){
     
   }
   populateHours() {
-    for (let i = 9; i <= 22; i++) {
-      this.hours.push(i);
-    }
+    this.hours.push("08:00");
+    this.hours.push("09:00");
+    this.hours.push("10:00");
+    this.hours.push("13:00");
+    this.hours.push("18:00");
+    this.hours.push("19:00");
+    this.hours.push("20:00");
   }
+  
 }
+  
   /*
-  addClass() {
-    this.http.post('/api/add-class', {}).subscribe(
-      () => {
-        console.log('Class added successfully');
-      },
-      (error) => {
-        console.error('Error adding class:', error);
-      }
-    );
-  }
 
   removeClass() {
     this.http.delete('/api/remove-class').subscribe(

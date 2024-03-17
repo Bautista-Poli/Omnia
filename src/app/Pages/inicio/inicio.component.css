@@ -23,10 +23,25 @@ nav ul li a {
 
 section {
     padding: 50px 20px;
+    
 }
 
-section h2 {
+section h3 {
     text-align: center;
+}
+section h1 {
+    text-align: center;
+    color:orange;
+}
+section p {
+    text-align: center;
+    color:orange;
+}
+
+.elementor-video{
+    margin-left:19%;
+    max-width: 100%;
+    width: 65%;
 }
 
 #banner {
@@ -46,7 +61,9 @@ section h2 {
 .carousel{
     width:10000px;
 }
-
+#nosotros{
+    color:white;
+}
 /* Tabla */
 table {
     width: 100%;
@@ -63,26 +80,81 @@ th, td {
 
 
 
-.gap {
-    background-color: #1E90FF; /* Azul */
+.Gap {
+    background-color: #ff961e; /* Azul */
+    cursor: pointer;
 }
 
-.indoor-cycle {
-    background-color: #FF6347; /* Rojo */
+.Gap:hover {
+    background-color: #ec8714; /* Darker shade of blue */
+    cursor: pointer;
 }
 
-.boxeo {
-    background-color: #32CD32; /* Verde */
+.Indoor {
+    background-color: #808080 ; /* Rojo */
+    cursor: pointer;
 }
 
-.zumba {
-    background-color: #FF1493; /* Rosado */
+.Indoor:hover {
+    background-color: #646464; /* Darker shade of red */
 }
 
-.cross-training {
-    background-color: #FFFF00; /* Amarillo */
+.Boxeo {
+    background-color: #ff961e; /* Verde */
+    cursor: pointer;
 }
 
-.functional {
-    background-color: #FFA500; /* Naranja */
+.Boxeo:hover {
+    background-color: #ec8714; /* Darker shade of green */
+}
+
+.Zumba {
+    background-color: #808080; /* Rosado */
+    cursor: pointer;
+}
+
+.Zumba:hover {
+    background-color: #646464; /* Darker shade of pink */
+}
+
+.CrossTraining {
+    background-color: #ff961e; /* Amarillo */
+    cursor: pointer;
+}
+
+.CrossTraining:hover {
+    background-color: #ec8714; /* Darker shade of yellow */
+}
+
+.Functional {
+    background-color: #ff961e; /* Naranja */
+    cursor: pointer;
+}
+
+.Functional:hover {
+    background-color: #ec8714; /* Darker shade of orange */
+}
+
+.Yoga {
+    background-color: #808080; /* Verde clarito */
+    cursor: pointer;
+}
+
+.Yoga:hover {
+    background-color: #666666; /* Darker shade of light green */
+}
+
+.Stretching {
+    background-color: #ff961e; /* celeste */
+    cursor: pointer;
+}
+
+.Stretching:hover {
+    background-color: #ec8714; /* Darker shade of cyan */
+}
+
+a{
+    padding:10px 25%;
+    color:white;
+    text-decoration: none;
 }

@@ -1,15 +1,28 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../Components/header/header.component';
+import { FooterComponent } from '../Components/footer/footer.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { Schedule } from '../interface/class.interface';
+import { Hours, Schedule, Class } from '../interface/data.interface';
+
+import { CommonModule } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common'; 
+import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
+
+import { HourService } from '../service/hour.service';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
   imports: [
     HeaderComponent,
+    FooterComponent,
+    RouterModule,
     CarouselModule,
+    NgFor,
+    NgIf,
+    CommonModule
   ],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
@@ -40,167 +53,26 @@ export class InicioComponent {
     nav: true
   }
 
-  programa: Schedule = {
-    "Monday": {
-        "18": [
-            {
-                src: "image_url",
-                name: "Gap",
-                time: 18,
-                id: 1
-            }
-        ],
-        "13": [
-            {
-                src: "image_url",
-                name: "Indoor Cycle",
-                time: 13,
-                id: 2
-            }
-        ],
-        "19": [
-            {
-                src: "image_url",
-                name: "Indoor Cycle",
-                time: 19,
-                id: 3
-            },
-            {
-                src: "image_url",
-                name: "Functional",
-                time: 19,
-                id: 4
-            }
-        ],
-        "9": [
-            {
-                src: "image_url",
-                name: "Functional",
-                time: 9,
-                id: 5
-            }
-        ]
-    },
-    "Tuesday": {
-        "18": [
-            {
-                src: "image_url",
-                name: "Zumba",
-                time: 18,
-                id: 6
-            }
-        ],
-        "8": [
-            {
-                src: "image_url",
-                name: "Cross Training",
-                time: 8,
-                id: 7
-            }
-        ]
-    },
-    "Wednesday": {
-        "18": [
-            {
-                src: "image_url",
-                name: "Gap",
-                time: 18,
-                id: 8
-            }
-        ],
-        "13": [
-            {
-                src: "image_url",
-                name: "Indoor Cycle",
-                time: 13,
-                id: 9
-            }
-        ],
-        "20": [
-            {
-                src: "image_url",
-                name: "Boxeo",
-                time: 20,
-                id: 10
-            }
-        ],
-        "9": [
-            {
-                src: "image_url",
-                name: "Functional",
-                time: 9,
-                id: 11
-            }
-        ],
-        "19": [
-            {
-                src: "image_url",
-                name: "Functional",
-                time: 19,
-                id: 12
-            }
-        ]
-    },
-    "Thursday": {
-        "18": [
-            {
-                src: "image_url",
-                name: "Zumba",
-                time: 18,
-                id: 13
-            }
-        ],
-        "8": [
-            {
-                src: "image_url",
-                name: "Cross Training",
-                time: 8,
-                id: 14
-            }
-        ]
-    },
-    "Friday": {
-        "18": [
-            {
-                src: "image_url",
-                name: "Gap",
-                time: 18,
-                id: 15
-            }
-        ],
-        "13": [
-            {
-                src: "image_url",
-                name: "Indoor Cycle",
-                time: 13,
-                id: 16
-            }
-        ],
-        "20": [
-            {
-                src: "image_url",
-                name: "Boxeo",
-                time: 20,
-                id: 17
-            }
-        ],
-        "9": [
-            {
-                src: "image_url",
-                name: "Functional",
-                time: 9,
-                id: 18
-            }
-        ],
-        "19": [
-            {
-                src: "image_url",
-                name: "Functional",
-                time: 19,
-                id: 19
-            }
-        ]
-    }
-  };
+  programa: Array<string> = [
+    "Lunes","Martes","Miercoles","Jueves","Viernes"
+  ]
 
+  
+  index = '8';
+  horas: Hours;
+
+  constructor(private hourService: HourService){
+    this.horas = hourService.getAllHours();
+  }
+
+  toObjectKeys(valor:any):string[]{
+    return Object.keys(valor);
+  }
+  toNumber(value:string):number{
+    return Number(value);
+  }
+
+  valor():number{
+    return 8;
+  }
 }
